@@ -1,0 +1,44 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  lint-builder:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # node-version: [10.x, 12.x, 13.x]
+        node-version: [12.x]
+        # os: [ubuntu-18.04, windows-2019, macOS-10.14]
+        os: [ubuntu-18.04]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install --frozen-lockfile
+        working-directory: ./builder
+      - run: yarn run lint
+        working-directory: ./builder
+
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # node-version: [10.x, 12.x, 13.x]
+        node-version: [12.x]
+        # os: [ubuntu-18.04, windows-2019, macOS-10.14]
+        os: [ubuntu-18.04]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install --frozen-lockfile
+        working-directory: ./builder
+      - run: yarn start
+        working-directory: ./builder

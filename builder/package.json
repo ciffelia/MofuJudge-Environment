@@ -1,0 +1,32 @@
+{
+  "name": "mofujudge-environment-builder",
+  "version": "1.0.0",
+  "description": "Build judge environments for MofuJudge.",
+  "author": "Ciffelia <mc.prince.0203@gmail.com> (https://ciffelia.com/)",
+  "repository": "github:MofuCoder/MofuJudge-Environment",
+  "homepage": "https://github.com/MofuCoder/MofuJudge-Environment#readme",
+  "bugs": "https://github.com/MofuCoder/MofuJudge-Environment/issues",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "lint": "eslint --ext .js,.ts ./src",
+    "fix": "eslint --ext .js,.ts --fix ./src"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.6",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-with-typescript": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.2"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.3"
+  }
+}
