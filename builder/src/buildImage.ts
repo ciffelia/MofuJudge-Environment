@@ -9,7 +9,7 @@ const buildImage = async (environmentDir: string, distDir: string): Promise<void
     const tag = `mofujudge-${environmentName}`
 
     console.log(`Building ${environmentName}...`)
-    await exec(`docker image build --build-arg="BUILDKIT_INLINE_CACHE=1" --tag="${tag}" "${environmentDir}/${environmentName}"`)
+    await exec(`docker image build --tag="${tag}" "${environmentDir}/${environmentName}"`)
 
     console.log(`Saving ${environmentName}...`)
     await exec(`docker image save --output="${distDir}/${environmentName}.tar" "${tag}"`)
