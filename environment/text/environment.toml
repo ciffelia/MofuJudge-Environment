@@ -1,6 +1,4 @@
 title = "Text (cat)"
 description = "Text (cat)"
 
-source_file = "/home/judge/main.txt"
-compile_command = "exit 0"
-exec_command = "cat ./main.txt"
+version = "1.0.0"
