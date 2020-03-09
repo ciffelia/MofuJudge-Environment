@@ -10,9 +10,6 @@ const buildImage = async (environmentDir: string, distDir: string): Promise<void
 
     console.log(`Building ${environmentName}...`)
     await exec(`docker image build --tag="${tag}" "${environmentDir}/${environmentName}"`)
-
-    console.log(`Saving ${environmentName}...`)
-    await exec(`docker image save --output="${distDir}/${environmentName}.tar" "${tag}"`)
   }
 }
 
