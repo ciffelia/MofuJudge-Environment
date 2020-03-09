@@ -6,7 +6,7 @@ const buildImage = async (environmentDir: string, distDir: string): Promise<void
 
   // Build images
   for (const environmentName of environmentNameList) {
-    const tag = `mofujudge-${environmentName}`
+    const tag = `mofujudge-${environmentName}:latest`
 
     console.log(`Building ${environmentName}...`)
     await exec(`docker image build --tag="${tag}" "${environmentDir}/${environmentName}"`)
