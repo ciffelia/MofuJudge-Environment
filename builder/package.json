@@ -1,5 +1,5 @@
 {
-  "name": "mofujudge-environment-builder",
+  "name": "@mofujudge/environment-builder",
   "version": "1.0.0",
   "description": "Build judge environments for MofuJudge.",
   "author": "Ciffelia <mc.prince.0203@gmail.com> (https://ciffelia.com/)",
