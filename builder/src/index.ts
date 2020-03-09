@@ -18,7 +18,7 @@ import compileEnvironmentToml from './compileEnvironmentToml'
   await fs.mkdir(distDir)
 
   console.log('Building docker images...')
-  await buildImage(environmentDir, distDir)
+  await buildImage('mofujudge-', environmentDir, distDir)
 
   console.log('Compiling environment definition files...')
   await compileEnvironmentToml(environmentDir, distDir)
