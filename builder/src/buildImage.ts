@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import exec from './exec'
 
-const buildImage = async (tagPrefix: string, environmentDir: string, distDir: string): Promise<void> => {
+const buildImage = async (tagPrefix: string, environmentDir: string): Promise<void> => {
   const environmentNameList = await fs.readdir(environmentDir)
 
   // Build images
