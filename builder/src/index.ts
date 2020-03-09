@@ -1,7 +1,7 @@
 import path from 'path'
 import { promises as fs } from 'fs'
 import buildImage from './buildImage'
-import compileEnvironmentToml from './compileEnvironmentToml'
+import generateEnvironmentCatalog from './generateEnvironmentCatalog'
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => {
@@ -18,8 +18,8 @@ import compileEnvironmentToml from './compileEnvironmentToml'
   await fs.mkdir(distDir)
 
   console.log('Building docker images...')
-  await buildImage('mofujudge-', environmentDir)
+  const builtImageList = await buildImage('mofujudge-', environmentDir)
 
-  console.log('Compiling environment definition files...')
-  await compileEnvironmentToml(environmentDir, distDir)
+  console.log('Generating a environment catalog...')
+  await generateEnvironmentCatalog(builtImageList, distDir)
 })()
