@@ -16,7 +16,7 @@ RUN curl --silent --show-error --location --fail --remote-name https://dl.bintra
 
 LABEL io.github.mofucoder.mofujudge-environment.is-mofujudge-environment="true"
 
-LABEL io.github.mofucoder.mofujudge-environment.name="gcc-cpp17"
+LABEL io.github.mofucoder.mofujudge-environment.name="cpp17-gcc"
 LABEL io.github.mofucoder.mofujudge-environment.version="1.0.0"
 
 LABEL io.github.mofucoder.mofujudge-environment.title="C++17 (GCC)"
