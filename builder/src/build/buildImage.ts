@@ -3,13 +3,13 @@ import exec from '../util/exec'
 import getLabels from '../util/getLabels'
 import BuiltImage from '../interface/BuiltImage'
 
-const buildImage = async (tagPrefix: string, environmentDir: string): Promise<BuiltImage[]> => {
+const buildImage = async (imagePrefix: string, environmentDir: string): Promise<BuiltImage[]> => {
   const environmentNameList = await fs.readdir(environmentDir)
 
   const builtImageList: BuiltImage[] = []
 
   for (const environmentName of environmentNameList) {
-    const repo = `${tagPrefix}${environmentName}`
+    const repo = `${imagePrefix}${environmentName}`
 
     console.log(`Building ${environmentName}...`)
     await exec(`docker image build --tag="${repo}:latest" "${environmentDir}/${environmentName}"`, true)
