@@ -17,8 +17,10 @@ import generateEnvironmentCatalog from './generateEnvironmentCatalog'
 
   await fs.mkdir(distDir)
 
+  const imagePrefix = process.env.IMAGE_PREFIX ?? 'mofujudge-'
+
   console.log('Building docker images...')
-  const builtImageList = await buildImage('mofujudge-', environmentDir)
+  const builtImageList = await buildImage(imagePrefix, environmentDir)
 
   console.log('Generating a environment catalog...')
   await generateEnvironmentCatalog(builtImageList, distDir)
