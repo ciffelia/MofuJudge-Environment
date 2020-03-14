@@ -1,16 +1,11 @@
 import pushImage from './pushImage'
 import createDistDir from '../util/createDistDir'
-import extractEnvInfoFromGitRef from './extractEnvInfoFromGitRef'
 import generateEnvironmentDefinition from './generateEnvironmentDefinition'
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => {
-  const ref = process.env.GITHUB_REF
-  if (ref == null) {
-    throw new Error('GITHUB_REF is not defined.')
-  }
-
-  const { name: envName, version } = extractEnvInfoFromGitRef(ref)
+  const envName = process.argv[2]
+  const version = process.argv[3]
 
   const imagePrefix = process.env.IMAGE_PREFIX ?? 'mofujudge-'
   const image = `${imagePrefix}${envName}:${version}`

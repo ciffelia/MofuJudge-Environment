@@ -60,8 +60,15 @@ jobs:
 
       - run: yarn install --frozen-lockfile
         working-directory: ./tools
-      - run: yarn run build
+
+      - id: parse-tag-refs
+        run: yarn run parseTagRefs
         working-directory: ./tools
+
+      - run: yarn run build $ENV_NAME
+        working-directory: ./tools
+        env:
+          ENV_NAME: ${{ steps.parse-tag-refs.outputs.name }}
 
       - name: Login to GitHub Packages Docker Registry
         run: echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin docker.pkg.github.com
@@ -70,8 +77,11 @@ jobs:
           DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push image to GitHub Packages and generate an environment definition file.
-        run: yarn run release
+        run: yarn run release $ENV_NAME $ENV_VERSION
         working-directory: ./tools
+        env:
+          ENV_NAME: ${{ steps.parse-tag-refs.outputs.name }}
+          ENV_VERSION: ${{ steps.parse-tag-refs.outputs.version }}
 
       - name: Logout from GitHub Packages Docker Registry
         run: docker logout docker.pkg.github.com

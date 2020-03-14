@@ -10,6 +10,7 @@
   "private": true,
   "scripts": {
     "build": "ts-node ./src/build/index.ts",
+    "parseTagRefs": "ts-node ./src/parseTagRefs/index.ts",
     "release": "ts-node ./src/release/index.ts",
     "lint": "eslint --ext .js,.ts ./src",
     "fix": "eslint --ext .js,.ts --fix ./src"
