@@ -15,6 +15,9 @@ const buildImage = async (imagePrefix: string, environmentName: string): Promise
   // Create version tag
   const version = labels['io.github.mofucoder.mofujudge-environment.version']
   await exec(`docker image tag "${repo}:latest" "${repo}:${version}"`)
+
+  // Remove latest tag
+  await exec(`docker image rm "${repo}:latest"`)
 }
 
 export default buildImage
