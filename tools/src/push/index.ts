@@ -1,6 +1,4 @@
 import pushImage from './pushImage'
-import createDistDir from '../util/createDistDir'
-import generateEnvironmentDefinition from './generateEnvironmentDefinition'
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => {
@@ -12,8 +10,4 @@ import generateEnvironmentDefinition from './generateEnvironmentDefinition'
 
   console.log(`Pushing ${envName}@${version}...`)
   await pushImage(image)
-
-  console.log('Generating an environment definition file...')
-  const distDir = await createDistDir()
-  await generateEnvironmentDefinition(image, distDir)
 })()

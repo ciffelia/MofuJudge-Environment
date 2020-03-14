@@ -76,8 +76,8 @@ jobs:
           DOCKER_USER: ${{ github.actor }}
           DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push image to GitHub Packages and generate an environment definition file.
-        run: yarn run release $ENV_NAME $ENV_VERSION
+      - name: Push image to GitHub Packages
+        run: yarn run push $ENV_NAME $ENV_VERSION
         working-directory: ./tools
         env:
           ENV_NAME: ${{ steps.parse-tag-refs.outputs.name }}
@@ -85,6 +85,13 @@ jobs:
 
       - name: Logout from GitHub Packages Docker Registry
         run: docker logout docker.pkg.github.com
+
+      - name: Generate an environment definition file.
+        run: yarn run generateEnvDefinition $ENV_NAME $ENV_VERSION
+        working-directory: ./tools
+        env:
+          ENV_NAME: ${{ steps.parse-tag-refs.outputs.name }}
+          ENV_VERSION: ${{ steps.parse-tag-refs.outputs.version }}
 
       - name: Create release
         id: create_release

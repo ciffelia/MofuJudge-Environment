@@ -10,8 +10,9 @@
   "private": true,
   "scripts": {
     "build": "ts-node ./src/build/index.ts",
+    "generateEnvDefinition": "ts-node ./src/generateEnvDefinition/index.ts",
     "parseTagRefs": "ts-node ./src/parseTagRefs/index.ts",
-    "release": "ts-node ./src/release/index.ts",
+    "push": "ts-node ./src/push/index.ts",
     "lint": "eslint --ext .js,.ts ./src",
     "fix": "eslint --ext .js,.ts --fix ./src"
   },

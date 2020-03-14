@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
 import getLabels from '../util/getLabels'
 
-const generateEnvironmentDefinition = async (image: string, distDir: string): Promise<void> => {
+const generateEnvDefinition = async (image: string, distDir: string): Promise<void> => {
   const labels = await getLabels(image)
 
   const environmentDefinition = {
@@ -18,4 +18,4 @@ const generateEnvironmentDefinition = async (image: string, distDir: string): Pr
   await fs.writeFile(jsonPath, JSON.stringify(environmentDefinition))
 }
 
-export default generateEnvironmentDefinition
+export default generateEnvDefinition
