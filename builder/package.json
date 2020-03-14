@@ -10,7 +10,7 @@
   "private": true,
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "build": "ts-node src/index.ts",
     "lint": "eslint --ext .js,.ts ./src",
     "fix": "eslint --ext .js,.ts --fix ./src"
   },
