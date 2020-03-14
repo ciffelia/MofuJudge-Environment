@@ -5,6 +5,8 @@ RUN adduser -D judge
 WORKDIR /home/judge
 USER judge
 
+LABEL io.github.mofucoder.mofujudge-environment.is-mofujudge-environment="true"
+
 LABEL io.github.mofucoder.mofujudge-environment.name="text"
 LABEL io.github.mofucoder.mofujudge-environment.version="1.0.0"
 
