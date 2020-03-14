@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs'
-import BuiltImage from './interface/BuiltImage'
+import BuiltImage from '../interface/BuiltImage'
 
 const generateEnvironmentCatalog = async (builtImageList: BuiltImage[], distDir: string): Promise<void> => {
   const environmentList = builtImageList.map(builtImage => ({

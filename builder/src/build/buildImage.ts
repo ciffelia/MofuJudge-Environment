@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs'
-import exec from './util/exec'
-import getLabels from './util/getLabels'
-import BuiltImage from './interface/BuiltImage'
+import exec from '../util/exec'
+import getLabels from '../util/getLabels'
+import BuiltImage from '../interface/BuiltImage'
 
 const buildImage = async (tagPrefix: string, environmentDir: string): Promise<BuiltImage[]> => {
   const environmentNameList = await fs.readdir(environmentDir)
