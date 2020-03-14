@@ -1,7 +1,7 @@
 {
-  "name": "@mofujudge/environment-builder",
+  "name": "@mofujudge/environment-tools",
   "version": "1.0.0",
-  "description": "Build judge environments for MofuJudge.",
+  "description": "Build and release tools for MofuJudge-Environment.",
   "author": "Ciffelia <mc.prince.0203@gmail.com> (https://ciffelia.com/)",
   "repository": "github:MofuCoder/MofuJudge-Environment",
   "homepage": "https://github.com/MofuCoder/MofuJudge-Environment#readme",
