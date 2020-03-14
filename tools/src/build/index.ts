@@ -1,12 +1,15 @@
-import path from 'path'
 import buildImage from './buildImage'
+import buildAllImages from './buildAllImages'
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => {
-  const environmentDir = path.join(__dirname, '../../../environment')
+  const buildEnvName = process.argv[2]
 
   const imagePrefix = process.env.IMAGE_PREFIX ?? 'mofujudge-'
 
-  console.log('Building docker images...')
-  await buildImage(imagePrefix, environmentDir)
+  if (buildEnvName != null) {
+    await buildImage(imagePrefix, buildEnvName)
+  } else {
+    await buildAllImages(imagePrefix)
+  }
 })()
