@@ -1,12 +1,9 @@
 import { promises as fs } from 'fs'
 import exec from '../util/exec'
 import getLabels from '../util/getLabels'
-import BuiltImage from '../interface/BuiltImage'
 
-const buildImage = async (imagePrefix: string, environmentDir: string): Promise<BuiltImage[]> => {
+const buildImage = async (imagePrefix: string, environmentDir: string): Promise<void> => {
   const environmentNameList = await fs.readdir(environmentDir)
-
-  const builtImageList: BuiltImage[] = []
 
   for (const environmentName of environmentNameList) {
     const repo = `${imagePrefix}${environmentName}`
@@ -19,11 +16,7 @@ const buildImage = async (imagePrefix: string, environmentDir: string): Promise<
     // Create version tag
     const version = labels['io.github.mofucoder.mofujudge-environment.version']
     await exec(`docker tag "${repo}:latest" "${repo}:${version}"`)
-
-    builtImageList.push({ environmentName, repo, version, labels })
   }
-
-  return builtImageList
 }
 
 export default buildImage
