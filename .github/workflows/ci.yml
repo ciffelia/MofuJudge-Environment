@@ -101,6 +101,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./tools/dist/environment.json
-          asset_name: environment.json
+          asset_path: ${{ format('./tools/dist/{0}.json', steps.parse-tag-refs.outputs.tag) }}
+          asset_name: ${{ format('{0}.json', steps.parse-tag-refs.outputs.tag) }}
           asset_content_type: application/json
