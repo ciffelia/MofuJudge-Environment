@@ -4,40 +4,26 @@ on: [push, pull_request]
 
 jobs:
   lint-builder:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        # node-version: [10.x, 12.x, 13.x]
-        node-version: [12.x]
-        # os: [ubuntu-18.04, windows-2019, macOS-10.14]
-        os: [ubuntu-18.04]
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12.x
       - run: yarn install --frozen-lockfile
         working-directory: ./tools
       - run: yarn run lint
         working-directory: ./tools
 
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        # node-version: [10.x, 12.x, 13.x]
-        node-version: [12.x]
-        # os: [ubuntu-18.04, windows-2019, macOS-10.14]
-        os: [ubuntu-18.04]
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12.x
       - run: yarn install --frozen-lockfile
         working-directory: ./tools
       - run: yarn run build
